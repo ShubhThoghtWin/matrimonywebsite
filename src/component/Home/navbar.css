@@ -1,0 +1,68 @@
+.navbar {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+
+  /* Add any additional styles you need for the navbar */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  /* Add any additional styles you need for the container */
+}
+
+.navbar-logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f0b085;
+  text-decoration: none;
+
+  /* Add any additional styles you need for the logo */
+}
+
+.navbar-menu {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin-right: 100px;
+  font-weight: 500;
+  cursor: pointer;
+
+  color: #313131;
+}
+
+.navbar-menu.active {
+  display: block;
+  /* Add any additional styles you need for the active menu */
+}
+
+.navbar-menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  /* Add any additional styles you need for the menu items */
+}
+
+.navbar-item {
+  margin-bottom: 0.5rem;
+  color: #ebeb54;
+  /* Add any additional styles you need for the menu item */
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+  }
+
+  .navbar-menu {
+    display: block;
+  }
+}

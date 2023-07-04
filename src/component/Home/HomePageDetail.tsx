@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Banner from "./assets/ban3.jpg";
 import {
   useTransition,
   useSpring,
@@ -9,40 +10,20 @@ import {
 } from "@react-spring/web";
 
 import styles from "./styles.module.css";
-// import data from "./data";
-
-// Gradients taken from: https://webgradients.com/
-const data = [
-  {
-    name: "Rare Wind",
-    description: "#a8edea → #fed6e3",
-    css: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-    height: 200,
-  },
-  {
-    name: "Saint Petersburg",
-    description: "#f5f7fa → #c3cfe2",
-    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-    height: 200,
-  },
-  {
-    name: "Deep Blue",
-    description: "#e0c3fc → #8ec5fc",
-    css: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
-    height: 200,
-  },
-  {
-    name: "Ripe Malinka",
-    description: "#f093fb → #f5576c",
-    css: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    height: 200,
-  },
-];
+import {
+  Box,
+  Button,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
+} from "@mui/material";
+import data from "./data";
+import Image from "next/image";
 
 const HomePageDetail = () => {
   console.log("data", data);
   const [open, set] = useState(false);
-  const [hide, setHide] = useState(false);
 
   const springApi = useSpringRef();
   const { size, ...rest } = useSpring({
@@ -51,7 +32,7 @@ const HomePageDetail = () => {
     from: { size: "20%", background: "hotpink" },
     to: {
       size: open ? "100%" : "20%",
-      background: open ? "white" : "hotpink",
+      background: open ? "white" : "#b1a4fd;",
     },
   });
 
@@ -70,29 +51,95 @@ const HomePageDetail = () => {
     open ? 0.1 : 0.2,
   ]);
   return (
-    <div className={styles.wrapper}>
-      <animated.div
-        style={{ ...rest, width: size, height: size }}
-        className={styles.container}
-        onClick={() => set((open) => !open)}
-      >
-        {open ? "" : <p onClick={() => setHide(true)}>Click to see Details</p>}
-        {open &&
-          data.map((style, item) => (
-            <div data-content={style.name}>
-              <animated.div
-                className={styles.item}
-                datatype={style.name}
+    <>
+      <Box className={styles.bgBanner}>
+        <Typography
+          style={{
+            boxSizing: "border-box",
+            width: "45%",
+            textAlign: "center",
+            fontSize: "18px",
+            margin: "60px 0px 0px 40px",
+
+            color: "coral",
+            backgroundColor: "hsla(120, 1%, 15%, 0.1)",
+          }}
+        >
+          We Have A Very Stringent And Personalized Screening Process To
+          Hand–Pick Our Clients, Based On Criteria Such As Family Background,
+          Academic And Professional Qualifications, Education, Interests,
+          Matrimonial profile And Much More for Indian Wedding.
+        </Typography>
+      </Box>
+      <Box className={styles.heading}>
+        <Typography style={{ padding: "10px" }}>
+          Our user-friendly interface and advanced search options make it
+          effortless to navigate through profiles and connect with potential
+          matches. Our dedicated team ensures the authenticity and privacy of
+          every profile, providing a secure environment for your search.{" "}
+        </Typography>
+
+        <Box className={styles.wrapper}>
+          <animated.div
+            style={{
+              ...rest,
+              width: size,
+              height: size,
+              boxShadow: "0px 10px 10px -5px rgba(0, 0, 0, 0.05)",
+            }}
+            className={styles.container}
+            onClick={() => set((open) => !open)}
+          >
+            {open ? (
+              ""
+            ) : (
+              <p
                 style={{
-                  ...style,
-                  background: style.css,
+                  width: "100%",
                 }}
-              />
-              <p>{}</p>
-            </div>
-          ))}
-      </animated.div>
-    </div>
+              >
+                {" "}
+                Have a Look what, we offer to you !!
+              </p>
+            )}
+            {open &&
+              data.map((item) => (
+                <Box className={styles.itemCard}>
+                  <animated.div
+                    className={styles.item}
+                    style={{
+                      ...item,
+                      background: item.css,
+                    }}
+                  >
+                    <Box>
+                      <CardContent>
+                        <Typography
+                          sx={{ fontSize: 14, fontWeight: 600 }}
+                          color="text.secondary"
+                          gutterBottom
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography variant="h5" component="div"></Typography>
+                        <Typography
+                          sx={{ mb: 1.5, fontSize: "13px" }}
+                          color="text.secondary"
+                        >
+                          {item.description}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small">Learn More</Button>
+                      </CardActions>
+                    </Box>
+                  </animated.div>
+                </Box>
+              ))}
+          </animated.div>
+        </Box>
+      </Box>
+    </>
   );
 };
 

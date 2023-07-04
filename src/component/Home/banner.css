@@ -1,0 +1,9 @@
+.banner-bg {
+  width: auto;
+  background-image: url(../Home/assets/wedding-6154519.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 120vh;
+  align-self: center;
+  text-align: center;
+}

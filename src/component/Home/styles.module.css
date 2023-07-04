@@ -1,11 +1,45 @@
 .wrapper {
   width: 100%;
   height: 100%;
-  background: lightblue;
-  padding: 20px;
+  background: rgb(227, 227, 247);
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
+}
+
+.banner_bg {
+  width: auto;
+  background-image: url(../Home/assets/wedding-6154519.jpg);
+  background-size: cover;
+  width: 100%;
+  height: 130vh;
+  align-self: center;
+  text-align: center;
+  border-bottom: 5px solid var(--primary);
+}
+
+@media screen and (min-width: 900px) {
+  .banner_bg {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 700px) {
+  .banner_bg {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .banner_bg {
+    display: flex;
+    min-height: fit-content;
+    /* flex-wrap: wrap; */
+  }
 }
 
 .container {
@@ -20,7 +54,6 @@
   box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.05);
   will-change: width, height;
 }
-
 .item {
   width: 100%;
   height: 100%;
@@ -38,5 +71,207 @@
   padding: 20px;
   width: 90%;
   z-index: -1;
-  background-color: beige;
+  background-color: rgb(202, 202, 253);
+}
+.text {
+  font-size: 20px !important;
+  width: 90%;
+
+  font-weight: 600;
+  color: #fff;
+  font-size: 25px !important;
+  background-color: hsla(120, 1%, 15%, 0.3);
+}
+
+.homePage_img {
+  border: 2px solid black;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 100;
+  /* Add any additional styles you need for the navbar */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  /* Add any additional styles you need for the container */
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  /* Add any additional styles you need for the logo */
+}
+
+.navbar-menu {
+  display: none;
+  /* Add any additional styles you need for the menu */
+}
+
+.navbar-menu.active {
+  display: block;
+  /* Add any additional styles you need for the active menu */
+}
+
+.navbar-menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Add any additional styles you need for the menu items */
+}
+
+.navbar-item {
+  margin-bottom: 0.5rem;
+  /* Add any additional styles you need for the menu item */
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+  }
+
+  .navbar-menu {
+    display: block;
+  }
+}
+
+.button30 {
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #e6e6e9;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  margin-top: 40%;
+
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 25px;
+  padding-right: 25px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 25px;
+  font-weight: 600;
+  background-color: hsla(120, 1%, 17%, 0.3);
+}
+
+.button30:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.button30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+  background-color: white;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.button30:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.text {
+  position: absolute;
+
+  margin-top: 20%;
+  color: #fcfcfd;
+  font-size: 20px;
+  text-align: center;
+}
+
+.Detail_description {
+  width: 90%;
+  display: flex;
+  min-height: fit-content;
+  margin: auto;
+  margin-top: 20px;
+  height: fit-content;
+  /* background-color: var(--primary); */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
+  border: 5px solid rgb(192, 188, 188);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
+}
+.heading {
+  margin: auto;
+  width: 90%;
+  font-size: 18px;
+  text-align: center;
+}
+.icon {
+  width: auto;
+  font-size: 40px;
+  padding: 5px;
+  margin: auto;
+  text-align: center;
+  margin-left: 50px;
+  height: 55px;
+}
+.cardDetail {
+  display: block;
+
+  margin: 0 auto;
+  transition: box-shadow 0.1s, transform 0.2s;
+  cursor: pointer;
+}
+.cardDetail:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.itemCard {
+  display: block;
+
+  margin: 0 auto;
+  transition: box-shadow 0.1s, transform 0.1s;
+  cursor: pointer;
+}
+
+.itemCard:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.bgBanner {
+  background-image: url("./assets/ban3.jpg");
+
+  background-size: cover;
+  height: 300px;
+  width: 95%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 30px;
+  /* border: 5px solid var(--primary); */
+
+  /* opacity: 0.75; */
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
 }
