@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import Navbar from "./Navbar";
 import Image from "next/image";
+import imgbg from "./assets/imgBg.jpg";
 const detail = [
   {
     feature: "Advanced Search Filters",
@@ -73,10 +74,8 @@ const Banner = () => {
                 {/* <Icon className={styles.icon}>{item.icon}</Icon> */}
                 <CardContent>
                   <Image
-                    style={{ width: "180px" }}
-                    src={
-                      "https://i.pinimg.com/564x/a9/72/0a/a9720ae02302e88a923fd1a7e915e5f3.jpg"
-                    }
+                    style={{ width: "180px", height: "250px" }}
+                    src={imgbg}
                     alt="f"
                   ></Image>
                   {/* <Typography
