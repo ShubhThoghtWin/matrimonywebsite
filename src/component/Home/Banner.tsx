@@ -67,7 +67,7 @@ const Banner = () => {
       <Box className={styles.descriptionDiv}>
         <Box className={styles.Detail_description}>
           {detail.map((item, index) => (
-            <Box>
+            <Box key={index}>
               <Card className={styles.cardDetail}>
                 {/* <Icon className={styles.icon}>{item.icon}</Icon> */}
                 <CardContent>
