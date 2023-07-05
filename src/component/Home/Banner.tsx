@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import Navbar from "./Navbar";
+import Image from "next/image";
 const detail = [
   {
     feature: "Advanced Search Filters",
@@ -67,17 +68,17 @@ const Banner = () => {
       <Box className={styles.descriptionDiv}>
         <Box className={styles.Detail_description}>
           {detail.map((item, index) => (
-            <Box key={index}>
+            <Box key={item.feature}>
               <Card className={styles.cardDetail}>
                 {/* <Icon className={styles.icon}>{item.icon}</Icon> */}
                 <CardContent>
-                  <img
+                  <Image
+                    style={{ width: "180px" }}
                     src={
                       "https://i.pinimg.com/564x/a9/72/0a/a9720ae02302e88a923fd1a7e915e5f3.jpg"
                     }
                     alt="f"
-                    width="180px"
-                  ></img>
+                  ></Image>
                   {/* <Typography
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
@@ -93,6 +94,7 @@ const Banner = () => {
                 color="text.secondary"
                 ></Typography> */}
                   <Typography variant="body2">
+                    {item.feature}
                     well meaning and kindly.
                     <br />
                     {'"a benevolent smile"'}

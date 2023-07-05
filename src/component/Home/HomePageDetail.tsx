@@ -108,7 +108,7 @@ const HomePageDetail = () => {
             )}
             {open &&
               data.map((item, index) => (
-                <Box key={index} className={styles.itemCard}>
+                <Box key={item.title} className={styles.itemCard}>
                   <animated.div
                     className={styles.item}
                     style={{
