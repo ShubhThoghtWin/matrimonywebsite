@@ -2,8 +2,8 @@
 export default [
   {
     name: "Rare Wind",
-    colorDescription: "#a8edea → #fed6e3",
-    css: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    colorDescription: "#f5f7fa → #c3cfe2",
+    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
     height: 200,
 
     title: "Extensive Profile Search",
@@ -23,8 +23,8 @@ export default [
   },
   {
     name: "Deep Blue",
-    colorDescription: "#e0c3fc → #8ec5fc",
-    css: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+    colorDescription: "#f5f7fa → #c3cfe2",
+    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
     height: 200,
     title: "Secure Messaging System",
     description:
@@ -33,8 +33,10 @@ export default [
   },
   {
     name: "Ripe Malinka",
-    colorDescription: "#f093fb → #f5576c",
-    css: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    // colorDescription: "#f093fb → #f5576c",
+    // css: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    colorDescription: "#f5f7fa → #c3cfe2",
+    css: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
     height: 200,
     title: "Profile Verification",
     description:

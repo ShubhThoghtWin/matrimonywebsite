@@ -1,12 +1,9 @@
-.navbar {
-  /* position: fixed; */
+/* .navbar {
   top: 0;
   left: 0;
   width: 100%;
   background-color: transparent;
   position: absolute;
-
-  /* Add any additional styles you need for the navbar */
 }
 
 .navbar-container {
@@ -14,7 +11,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  /* Add any additional styles you need for the container */
 }
 
 .navbar-logo {
@@ -22,8 +18,6 @@
   font-weight: bold;
   color: #f0b085;
   text-decoration: none;
-
-  /* Add any additional styles you need for the logo */
 }
 
 .navbar-menu {
@@ -40,7 +34,6 @@
 
 .navbar-menu.active {
   display: block;
-  /* Add any additional styles you need for the active menu */
 }
 
 .navbar-menu-items {
@@ -48,13 +41,11 @@
   padding: 0;
   margin: 0;
   color: #ffffff;
-  /* Add any additional styles you need for the menu items */
 }
 
 .navbar-item {
   margin-bottom: 0.5rem;
   color: #ebeb54;
-  /* Add any additional styles you need for the menu item */
 }
 
 @media (max-width: 768px) {
@@ -65,4 +56,130 @@
   .navbar-menu {
     display: block;
   }
+} */
+
+/*Desktop View*/
+.header {
+  position: absolute;
+  display: flex;
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+  height: 80px;
+  text-decoration: none;
+  z-index: 11;
+}
+.logo-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-container h1 {
+  color: rgb(255, 155, 83);
+}
+.logo {
+  width: 45px;
+  height: 45px;
+}
+.nav-options {
+  padding-left: 25px;
+  /* display: grid; */
+  /* grid-template-columns: repeat(3, auto); */
+  display: flex;
+  justify-content: space-between;
+  grid-gap: 50px;
+  list-style-type: none;
+}
+.mobile-option {
+  display: none;
+  text-decoration: none;
+}
+.option ul li {
+  color: rgb(255, 155, 83);
+}
+
+.option :hover {
+  color: white;
+}
+.link {
+  color: rgb(255, 229, 83);
+  text-decoration: none;
+}
+.signin-up {
+  display: flex;
+  padding: 0px 5px;
+  list-style-type: none;
+}
+.sign-in {
+  padding-right: 50px;
+  align-self: center;
+}
+.sign-in :hover {
+  color: white;
+}
+
+Link {
+  text-decoration: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+@media (max-width: 648px) {
+  /*Mobile View */
+  .header {
+    padding: 0px 10px;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .nav-options {
+    display: flex;
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    font-weight: 500;
+    float: right;
+
+    top: 80px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    flex-direction: column;
+    list-style-type: none;
+    grid-gap: 0px;
+  }
+  .nav-options.active {
+    background: #9899d1;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+    align-content: center;
+    padding-left: 0px;
+  }
+
+  .menu-icon {
+    width: 45px;
+    height: 45px;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vw;
+    padding: 30px 0px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+.mobile-menu {
+  display: block;
 }

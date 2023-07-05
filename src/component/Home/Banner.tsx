@@ -11,6 +11,7 @@ import {
   Icon,
   Typography,
 } from "@mui/material";
+import Navbar from "./Navbar";
 const detail = [
   {
     feature: "Advanced Search Filters",
@@ -45,8 +46,10 @@ const detail = [
 const Banner = () => {
   return (
     <>
-      <Box className={styles.banner_bg}>
-        <Container>
+      <Navbar />
+      <Box>
+        <Box className={styles.banner_bg}></Box>
+        <Container className={styles.bg_text}>
           <p className={styles.text}>
             Find your life partner with our trusted and reliable matrimonial
             platform. Join us today and embark on a journey to find your perfect
@@ -100,7 +103,7 @@ const Banner = () => {
           ))}
         </Box>
       </Box>
-      <Box id="one" style={{ bottom: 0 }}>
+      <Box id="one">
         <HomePageDetail />
       </Box>
     </>

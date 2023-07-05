@@ -29,10 +29,12 @@ const HomePageDetail = () => {
   const { size, ...rest } = useSpring({
     ref: springApi,
     config: config.stiff,
-    from: { size: "20%", background: "hotpink" },
+    from: { size: "100%", background: "rgb(220, 217, 241" },
     to: {
-      size: open ? "100%" : "20%",
-      background: open ? "white" : "#b1a4fd;",
+      size: open ? "100%" : "90%",
+      background: open ? "white" : "#f1f1ee;",
+      display: open ? "flex" : "",
+      transition: open ? " all 0.10s ease" : " all 0.5s ease",
     },
   });
 
@@ -57,12 +59,13 @@ const HomePageDetail = () => {
           style={{
             boxSizing: "border-box",
             width: "45%",
-            textAlign: "center",
-            fontSize: "18px",
+            textAlign: "left",
+            fontSize: "15px",
             margin: "60px 0px 0px 40px",
 
-            color: "coral",
+            color: "black",
             backgroundColor: "hsla(120, 1%, 15%, 0.1)",
+            padding: "10px",
           }}
         >
           We Have A Very Stringent And Personalized Screening Process To
@@ -71,14 +74,7 @@ const HomePageDetail = () => {
           Matrimonial profile And Much More for Indian Wedding.
         </Typography>
       </Box>
-      <Box className={styles.heading}>
-        <Typography style={{ padding: "10px" }}>
-          Our user-friendly interface and advanced search options make it
-          effortless to navigate through profiles and connect with potential
-          matches. Our dedicated team ensures the authenticity and privacy of
-          every profile, providing a secure environment for your search.{" "}
-        </Typography>
-
+      <Box>
         <Box className={styles.wrapper}>
           <animated.div
             style={{
@@ -93,14 +89,22 @@ const HomePageDetail = () => {
             {open ? (
               ""
             ) : (
-              <p
-                style={{
-                  width: "100%",
-                }}
-              >
-                {" "}
-                Have a Look what, we offer to you !!
-              </p>
+              <>
+                <Typography
+                  className={styles.heading}
+                  style={{ padding: "10px" }}
+                >
+                  Our user-friendly interface and advanced search options make
+                  it effortless to navigate through profiles and connect with
+                  potential matches. Our dedicated team ensures the authenticity
+                  and privacy of every profile, providing a secure environment
+                  for your search.{" "}
+                </Typography>
+                <h2>
+                  Have a look what we offer to you...
+                  <br></br>just Click here !{" "}
+                </h2>
+              </>
             )}
             {open &&
               data.map((item) => (
