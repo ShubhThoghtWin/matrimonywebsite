@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Banner from "./assets/ban3.jpg";
+
 import {
   useTransition,
   useSpring,
@@ -19,7 +19,6 @@ import {
   Typography,
 } from "@mui/material";
 import data from "./data";
-import Image from "next/image";
 
 const HomePageDetail = () => {
   console.log("data", data);

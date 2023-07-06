@@ -4,11 +4,35 @@ import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./navbar.css";
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  Typography,
+} from "@mui/material";
+import Login from "../Login/Login";
+import styled from "@emotion/styled";
+
+const DialogBox = styled(Dialog)`
+  backgroundcolor: none;
+  color: red;
+`;
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
   return (
     <div className="header">
       <div className="logo-nav">
@@ -37,9 +61,7 @@ const Navbar = () => {
         </div>
         <ul className="signin-up">
           <li className="sign-in" onClick={closeMobileMenu}>
-            <Link href="#" className="link">
-              SIGN-IN
-            </Link>
+            <Typography onClick={handleClickOpen}>SIGN-IN</Typography>
           </li>
         </ul>
       </div>
@@ -50,6 +72,24 @@ const Navbar = () => {
           <MenuIcon className="menu-icon" />
         )}
       </div>
+
+      <Dialog
+        PaperProps={{
+          sx: {
+            background: "none",
+            boxShadow: "none",
+          },
+        }}
+        maxWidth="lg"
+        fullScreen={false}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        scroll="body"
+      >
+        <Login />
+      </Dialog>
     </div>
   );
 };
