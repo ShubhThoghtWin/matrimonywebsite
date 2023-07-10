@@ -1,48 +1,42 @@
 import { useTheme } from "@mui/material/styles";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
-import { Box, Button, MobileStepper, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControlLabel,
+  MobileStepper,
+  Paper,
+  Radio,
+  RadioGroup,
+  Typography,
+} from "@mui/material";
 import React from "react";
 
-const steps = [
+interface Step {
+  label: string;
+  description: { id: string; name: string }[];
+}
+
+const steps: Step[] = [
   {
     label: "Creating Profile for ",
-    relation: [
+    description: [
       {
         id: "1",
-        item: "Myself",
+        name: "son",
       },
       {
         id: "2",
-        item: "Son",
+        name: "daughter",
       },
       {
         id: "3",
-        item: "Daughter",
+        name: "brother",
       },
-      {
-        id: "4",
-        item: "Sister",
-      },
-      {
-        id: "5",
-        item: "Brother",
-      },
+      { id: "4", name: "sister" },
     ],
   },
-  {
-    label: "Create an ad group",
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Create an ad",
-    description: `Try out different ad text to see what brings in the most customers,
-                and learn how to enhance your ads using features like ad extensions.
-                If you run into any problems with your ads, find out how to tell if
-                they're running and how to resolve approval issues.`,
-  },
 ];
-
 const Signup = () => {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -57,54 +51,88 @@ const Signup = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
-        square
-        elevation={0}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: 50,
-          pl: 2,
-          bgcolor: "background.default",
-        }}
-      >
-        <Typography>{steps[activeStep].label}</Typography>
-      </Paper>
-      <Box sx={{ height: 255, maxWidth: 400, width: "100%", p: 2 }}>
-        {steps[activeStep].description}
+    <>
+      <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
+        <Paper
+          square
+          elevation={0}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            height: 50,
+            pl: 2,
+            bgcolor: "background.default",
+          }}
+        >
+          <Typography>{steps[activeStep].label}</Typography>
+        </Paper>
+        <Box
+          sx={{
+            height: 255,
+            maxWidth: 400,
+            width: "100%",
+            p: 2,
+            display: "flex",
+            flexFlow: "row",
+          }}
+        >
+          {steps[activeStep].description.map((item) => {
+            return (
+              <Box>
+                <RadioGroup
+                  aria-labelledby="demo-controlled-radio-buttons-group"
+                  name="controlled-radio-buttons-group"
+                  // value={value}
+                  // onChange={handleChange}
+                >
+                  <Box>
+                    <FormControlLabel
+                      value="female"
+                      control={<Radio />}
+                      label={item.name}
+                    />
+                  </Box>
+                </RadioGroup>
+              </Box>
+            );
+          })}
+        </Box>
+        <MobileStepper
+          variant="text"
+          steps={maxSteps}
+          position="static"
+          activeStep={activeStep}
+          nextButton={
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === maxSteps - 1}
+            >
+              Next
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
       </Box>
-      <MobileStepper
-        variant="text"
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </Box>
+    </>
   );
 };
 

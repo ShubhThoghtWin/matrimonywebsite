@@ -37,12 +37,14 @@ const Navbar = () => {
     <div className="header">
       <div className="logo-nav">
         <div className="logo-container">
-          <h1>Matrimonial Website</h1>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <h1>Matrimonial Website</h1>
+          </Link>
         </div>
         <div style={{ float: "right", marginRight: "500px" }}>
           <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-              <Link href="#" className="link">
+              <Link href="/about" className="link">
                 ABOUT
               </Link>
             </li>
@@ -78,6 +80,7 @@ const Navbar = () => {
           sx: {
             background: "none",
             boxShadow: "none",
+            width: "100%",
           },
         }}
         maxWidth="lg"

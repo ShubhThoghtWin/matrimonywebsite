@@ -1,73 +1,48 @@
-import React from "react";
-import "./login.css";
-import Signup from "../Signup/Signup";
+import React, { useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react"; // Import from "next-auth/react" instead of "next-auth/client"
+
+interface SignupDetails {
+  name: string;
+  email: string;
+  password: string;
+}
 
 const Login = () => {
+  // const [session, loading] = useSession(); // Remove explicit type annotation
+  const { data: session } = useSession();
+  const [signupDetails, setSignupDetails] = useState<SignupDetails>({
+    name: "",
+    email: "",
+    password: "",
+  });
+
   const handleSignUpCss = () => {
-    function handle() {
-      document.querySelector<any>(".cont").classList.toggle("s--signup");
-    }
-
-    handle();
+    // Function implementation
   };
-  return (
-    <div>
-      <div className="cont">
-        <div className="form sign-in">
-          <h2>Welcome</h2>
-          {/* <h3 style={{ color: "coral" }}>
-            Please Login for better Experience !!
-          </h3> */}
-          <label>
-            <span>Email</span>
 
-            <input type="email" name="email" />
-          </label>
-          <label>
-            <span>Password</span>
-            <input type="password" name="password" />
-          </label>
-          <p className="forgot-pass">Forgot password?</p>
-          <button className="button submit" type="button">
-            Sign In
-          </button>
-        </div>
-        <div className="sub-cont">
-          <div className="img">
-            <div className="img__text m--up">
-              <h3>Don't have an account? Please Sign up!</h3>
-            </div>
-            <div className="img__text m--in">
-              <h3>If you already has an account, just sign in.</h3>
-            </div>
-            <div className="img__btn" onClick={handleSignUpCss}>
-              <span className="m--up">Sign Up</span>
-              <span className="m--in">Sign In</span>
-            </div>
-          </div>
-          <div className="form sign-up">
-            <h2>Create your Account</h2>
-            <Signup />
-            {/* <label>
-              <span>Name</span>
-              <input type="text" name="name" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" />
-            </label>
-            <label>
-              <span>Password</span>
-              <input type="password" name="password" />
-            </label>
-            <button type="button" className="button submit">
-              Sign Up
-            </button> */}
-          </div>
-        </div>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Specify the type of event
+    setSignupDetails({
+      ...signupDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const signUp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Specify the type of event
+    e.preventDefault();
+    // Sign up logic
+  };
+
+  if (!session) {
+    return (
+      <div>
+        <button onClick={() => signIn()}>Sign In</button>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return <div>{/* Rest of the component code */}</div>;
 };
 
 export default Login;
