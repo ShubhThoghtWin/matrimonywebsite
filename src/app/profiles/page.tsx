@@ -11,7 +11,7 @@ interface CardData {
 const db: CardData[] = [
   {
     name: "Richard Hendricks",
-    url: "./img/richard.jpg",
+    url: "./img/erlich.jpg",
   },
   {
     name: "Erlich Bachman",
