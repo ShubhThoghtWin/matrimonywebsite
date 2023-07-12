@@ -15,6 +15,7 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+import Link from "next/link";
 
 interface Step {
   label: string;
@@ -256,9 +257,11 @@ const UserProfile = () => {
               activeStep={activeStep}
               nextButton={
                 activeStep === 2 ? (
-                  <Button size="small" onClick={handleSubmit}>
-                    Submit
-                  </Button>
+                  <Link href="/userprofile">
+                    <Button size="small" onClick={handleSubmit}>
+                      Submit
+                    </Button>
+                  </Link>
                 ) : (
                   <Button
                     size="small"
