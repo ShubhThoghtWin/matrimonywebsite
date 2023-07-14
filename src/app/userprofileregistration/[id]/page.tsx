@@ -209,7 +209,10 @@ const UserProfile = () => {
     <>
       <div className={styles.area}>
         <ul className={styles.circles}>{items}</ul>
-        <Container className={styles.userprofile_container}>
+        <Container
+          className={styles.userprofile_container}
+          onSubmit={handleSubmit}
+        >
           <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
             <Paper
               square
