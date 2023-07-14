@@ -7,9 +7,11 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Box,
+  Button,
   Container,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 import React from "react";
 import RestoreIcon from "@mui/icons-material/Restore";
@@ -18,9 +20,12 @@ import PersonPinCircleIcon from "@mui/icons-material/PersonPinCircle";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Image from "next/image";
 import avatar from "./userprfile/avatar.jpg";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const UserProfile = () => {
   const [value, setValue] = React.useState(0);
+  const router = useRouter();
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
@@ -29,6 +34,16 @@ const UserProfile = () => {
       setExpanded(isExpanded ? panel : false);
     };
 
+  const handleLogout = () => {
+    try {
+      axios.get("/api/users/logout");
+      toast.success("Logout successful");
+      router.push("/");
+    } catch (error: any) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
   return (
     <Box>
       <Container>
@@ -48,6 +63,9 @@ const UserProfile = () => {
               alt="avatar"
             ></Image>
           </Avatar>
+          <Box>
+            <Button onClick={handleLogout}>Logout</Button>
+          </Box>
         </Box>
       </Container>
       <Container

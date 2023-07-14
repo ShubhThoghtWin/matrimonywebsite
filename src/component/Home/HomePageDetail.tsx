@@ -51,6 +51,7 @@ const HomePageDetail = () => {
     0,
     open ? 0.1 : 0.2,
   ]);
+
   return (
     <>
       <Box className={styles.bgBanner}>

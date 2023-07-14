@@ -1,12 +1,13 @@
 import React, { use, useEffect, useState } from "react";
 import "./login.css";
 import Signup from "../Signup/Signup";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 const Login = () => {
-  // const router = useRouter();
+  const [error, setError] = useState();
+  const router = useRouter();
   const [signUpDetails, setSignupDetails] = useState({
     username: "",
     email: "",
@@ -47,24 +48,39 @@ const Login = () => {
 
   const handleSignUp = async (e: any) => {
     e.preventDefault();
+
     try {
       const res = await axios.post("/api/users/signup", signUpDetails);
 
       console.log("signup succcess", res.data);
+      toast.success("signup successfully");
+      handleSignUpCss();
     } catch (error: any) {
       toast.error(error.message);
       console.log("sgnup failed", error);
     }
   };
-  const handleLogin = () => {};
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post("/api/users/login", LoginDetails);
+
+      // console.log("signup succcess", res.data.id);
+      router.push(`/userprofileregistration/${res.data.id}`);
+      toast.success("Login successfully");
+    } catch (error: any) {
+      toast.error(error.message);
+      console.log("Login failed", error);
+    }
+  };
+
   return (
     <div>
       <div className="cont">
         <div className="form sign-in">
           <h2>Welcome</h2>
-          {/* <h3 style={{ color: "coral" }}>
-            Please Login for better Experience !!
-          </h3> */}
+
           <label>
             <span>Email</span>
 
@@ -125,6 +141,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };

@@ -155,3 +155,20 @@ body{
 .radioButton {
   color: rgb(22, 19, 19);
 }
+.profilePic {
+  width: 500px;
+  height: 200px;
+  background-color: rgb(224, 235, 250);
+  padding: 20px;
+  margin: auto;
+  border: 1px solid #ccc;
+}
+.profiledp {
+  margin: auto;
+  align-self: center;
+}
+.profileupload {
+  margin: 10px 0px 0px 50px;
+
+  align-self: center;
+}

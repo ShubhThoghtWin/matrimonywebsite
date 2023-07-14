@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 export async function connect() {
   try {
     mongoose.connect("mongodb+srv://Shubh:12345@cluster1.jqjvz1t.mongodb.net/");

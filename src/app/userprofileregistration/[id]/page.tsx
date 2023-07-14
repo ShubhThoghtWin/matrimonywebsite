@@ -1,7 +1,9 @@
 "use client";
-import { Container, TextField } from "@mui/material";
+import { Avatar, Container, TextField } from "@mui/material";
 import React, { useState } from "react";
 import styles from "../userprofile.module.css";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import { useTheme } from "@mui/material/styles";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
@@ -52,12 +54,12 @@ const steps: Step[] = [
     description: [
       {
         id: "1",
-        name: "First Name",
+        name: "Firstname",
         type: "text",
       },
       {
         id: "2",
-        name: "Last Name",
+        name: "Lastname",
         type: "text",
       },
       {
@@ -67,12 +69,12 @@ const steps: Step[] = [
       },
       {
         id: "4",
-        name: "BirthTime",
+        name: "Birthtime",
         type: "time",
       },
       {
         id: "5",
-        name: "Birth Place",
+        name: "Birthplace",
         type: "text",
       },
     ],
@@ -98,7 +100,7 @@ const steps: Step[] = [
       },
       {
         id: "4",
-        name: "Mobile Number",
+        name: "Mobilenumber",
         type: "number",
       },
       {
@@ -108,9 +110,59 @@ const steps: Step[] = [
       },
     ],
   },
+  {
+    label: " Upload Profile Photo ",
+    description: [
+      {
+        id: "1",
+        name: "Upload Photo",
+        type: "file",
+      },
+    ],
+  },
 ];
 
 const UserProfile = () => {
+  const formik = useFormik({
+    initialValues: {
+      Fullname: "",
+      Lastname: "",
+      ProfileCreatedfor: "",
+      Birthtime: "",
+      Birthplace: "",
+      Dateofbirth: "",
+      Religion: "",
+      Caste: "",
+      MobileNumber: "",
+      Hobbies: "",
+      Address: "",
+    },
+    validationSchema: Yup.object({
+      Fullname: Yup.string()
+        .min(2, "Mininum 2 characters")
+        .max(15, "Maximum 15 characters")
+        .required("Required!"),
+      Lastname: Yup.string()
+        .min(2, "Mininum 2 characters")
+        .max(15, "Maximum 15 characters")
+        .required("Required!"),
+      ProfileCreatedfor: Yup.string().required("Required!"),
+      Birthtime: Yup.string().required("Required!"),
+      Birthplace: Yup.string().required("Required!"),
+      Dateofbirth: Yup.string().required("Required!"),
+      Religion: Yup.string().required("Required!"),
+      Caste: Yup.string().required("Required!"),
+      MobileNumber: Yup.string().required("Required!"),
+      Hobbies: Yup.string().required("Required!"),
+      Address: Yup.string()
+        .min(2, "Mininum 2 characters")
+        .max(15, "Maximum 25 characters")
+        .required("Required!"),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
 
@@ -191,6 +243,7 @@ const UserProfile = () => {
                     <TextField
                       id="outlined-password-input"
                       label={item.name}
+                      name={item.name}
                       type={item.type}
                       autoComplete="current-password"
                     />
@@ -202,15 +255,35 @@ const UserProfile = () => {
                       label={item.name}
                       type={item.type}
                       autoComplete="current-password"
+                      name={item.name}
                     />
+                  </Box>
+                ) : activeStep === 3 ? (
+                  <Box>
+                    <Box className={styles.profilePic}>
+                      <Avatar
+                        className={styles.profiledp}
+                        sx={{ width: "100px", height: "100px" }}
+                      >
+                        {/* <Image src={}></Image> */}
+                      </Avatar>
+                      <TextField
+                        className={styles.profileupload}
+                        id="outlined-password-input"
+                        // label={item.name}
+                        type={item.type}
+                        autoComplete="current-password"
+                        name={item.name}
+                      />
+                    </Box>
                   </Box>
                 ) : (
                   <Box>
                     <RadioGroup
                       aria-labelledby="demo-controlled-radio-buttons-group"
-                      name="controlled-radio-buttons-group"
                       value={gender}
                       onChange={handlePersona}
+                      name={item.name}
                     >
                       <Box className={styles.radioButton}>
                         <FormControlLabel
@@ -256,11 +329,9 @@ const UserProfile = () => {
               position="static"
               activeStep={activeStep}
               nextButton={
-                activeStep === 2 ? (
+                activeStep === 3 ? (
                   <Link href="/userprofile">
-                    <Button size="small" onClick={handleSubmit}>
-                      Submit
-                    </Button>
+                    <Button size="small">Submit</Button>
                   </Link>
                 ) : (
                   <Button
